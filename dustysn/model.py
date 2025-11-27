@@ -934,7 +934,7 @@ def plot_model(object_name, last_samples, results, obs_wave, obs_flux, obs_flux_
              label=total_label)
 
     # Plot title with name, redshift, and distance in Mpc
-    distance_mpc = distance.to(u.Mpc).value
+    distance_mpc = (distance*u.cm).to(u.Mpc).value
     plt.title(f"{object_name} " + r"$-$" + f" z = {redshift} ({distance_mpc:.2f} Mpc)")
 
     # Plot individual components for two-component model
