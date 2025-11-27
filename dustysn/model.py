@@ -934,7 +934,7 @@ def plot_model(object_name, last_samples, results, obs_wave, obs_flux, obs_flux_
              label=total_label)
 
     # Plot title with name, redshift, and distance in Mpc
-    distance_mpc = (distance*u.cm).to(u.Mpc).value
+    distance_mpc = distance.to(u.Mpc).value
     plt.title(f"{object_name} " + r"$-$" + f" z = {redshift} ({distance_mpc:.2f} Mpc)")
 
     # Plot individual components for two-component model
@@ -1302,7 +1302,7 @@ def fit_dust_model(obs_wave, obs_flux, obs_flux_err, obs_limits, redshift, objec
     if distance is None:
         distance = calc_distance(redshift)
     elif isinstance(distance, u.Quantity):
-        distance = distance.to(u.cm).value
+        distance = distance.to(u.cm)
     else:
         raise ValueError(f"distance must be an astropy Quantity or None, not {type(distance)}")
 
